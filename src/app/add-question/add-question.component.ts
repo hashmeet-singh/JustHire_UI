@@ -33,7 +33,7 @@ export class AddQuestionComponent implements OnInit {
       experience: ['', [Validators.required, Validators.email]],
       comment: ['', Validators.required]
     });
-
+ 
     this.statsService.loadRounds()
       .subscribe(response => {
         this.rounds = response;
