@@ -1,0 +1,61 @@
+<p-card title="Candidate Info" styleClass="ui-card-shadow">
+  <div>
+    <table class="table table-sm">
+      <tr>
+        <th>Name:</th>
+        <td>{{currentCandidate.firstName}} &nbsp; {{currentCandidate.lastName}}</td>
+        <td>
+          <button pButton type="button" label="View Report " style="margin-right: .25em; "></button>
+        </td>
+      </tr>
+      <tr>
+        <th>Experience:</th>
+        <td>{{currentCandidate.experience}}&nbsp; Yrs</td>
+        <td>
+          <button pButton type="button" label="View Resume" style="margin-right: .25em"></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</p-card>
+
+<hr/>
+
+
+<p-card title="Question" styleClass="ui-card-shadow">
+  <p-header>
+    <!-- <img src="Card" src="assets/showcase/images/usercard.png"> -->
+  </p-header>
+  <div>{{question.question}}</div>
+  <br>
+  <h3>Additional Notes</h3>
+  <div>{{question.comment}}</div>
+  <hr/>
+  <div>
+    <form [formGroup]="answerForm" (submit)="handleSubmit($event)">
+      <div class="form-group">
+        <label>Remarks</label>
+        <textarea class="form-control" formControlName="comment"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Performance</label>
+        <select class="form-control" formControlName="performance">
+          <option>Good</option>
+          <option>Satisfactory</option>
+          <option>Poor</option>
+          <option>Bad</option>
+        </select>
+      </div>
+      <button pButton label="Submit" icon="fa fa-check" style="margin-right: .25em" [disabled]="!answerSubmitted"></button>
+      <button pButton type="button" label="Next Question" icon="fa fa-arrow-right" 
+              [disabled]="answerSubmitted" class="ui-button-secondary"
+              (click)="nextQuestion($event)"></button>
+      <button pButton type="button" label="End Interview" icon="fa fa-check" 
+              [disabled]="!minThresholdReached()" style="margin-right: .25em; float: right"
+              (click)="stopInterview($event)"></button>
+    </form>
+  </div>
+  <p-footer>
+
+  </p-footer>
+</p-card>

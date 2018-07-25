@@ -1,0 +1,35 @@
+<p-dataView #dv [value]="questions" [paginator]="true" [rows]="10" styleClass="ui-card-shadow">
+  <p-header>List of Pending Questions</p-header>
+  <ng-template let-questions pTemplate="listItem">
+    <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+      <div class="ui-g-12 ui-md-8 car-details">
+        <div class="ui-g">
+          <div class="ui-g-2 ui-sm-6">Question Id: </div>
+          <div class="ui-g-10 ui-sm-6">
+            <b>{{questions.questionId}}</b>
+          </div>
+
+          <div class="ui-g-2 ui-sm-6">Question: </div>
+          <div class="ui-g-10 ui-sm-6">
+            <b>{{questions.question}}</b>
+          </div>
+
+          <div class="ui-g-2 ui-sm-6">Experience: </div>
+          <div class="ui-g-10 ui-sm-6">
+            <b>{{questions.experience}}</b>
+          </div>
+
+          <div class="ui-g-2 ui-sm-6">Difficulty: </div>
+          <div class="ui-g-10 ui-sm-6">
+            <b>{{questions.difficulty}}</b>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-12 ui-md-1 search-icon">
+        <button>
+          <i class="fa fa-check" aria-hidden="true" (click)="approveQuestion(questions)"></i>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

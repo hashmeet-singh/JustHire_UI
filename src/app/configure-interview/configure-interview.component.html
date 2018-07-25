@@ -1,0 +1,26 @@
+<p-card title="Configure System Attributes" styleClass="ui-card-shadow">
+    <hr/>
+    <form [formGroup]="systemForm" (submit)="handleSubmit($event)">
+      <div class="form-group">
+        <label>Number of Rounds</label>
+        <input type="number" placeholder="Name" class="form-control" formControlName="noOfRounds" />
+      </div>
+  
+      <div class="form-group">
+        <label>Minimum Questions</label>
+        <input type="number" placeholder="Name" class="form-control" formControlName="minimumQuestions" />
+      </div>
+  
+    <div class="form-group">
+        <label>Threshold</label>
+        <input type="number" placeholder="Phone" class="form-control" formControlName="threshold">
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-plus"></i> Set Attributes</button>
+      </div>
+    </form>
+  
+  
+  </p-card>

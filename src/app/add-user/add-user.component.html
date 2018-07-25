@@ -1,0 +1,50 @@
+<p-card title="Create User" styleClass="ui-card-shadow">
+  <hr/>
+  <form [formGroup]="userForm" (submit)="handleSubmit($event)">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" placeholder="Name" class="form-control" formControlName="firstName" />
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" placeholder="Name" class="form-control" formControlName="lastName" />
+    </div>
+
+
+
+    <div class="form-group">
+      <label>Round Alloted</label>
+      <select class="form-control" formControlName="roundNumber">
+        <option value="0" *ngFor="let x of rounds" value="{{x.roundNumber}}">{{x.roundNumber}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="number" placeholder="Phone" class="form-control" formControlName="phoneNumber">
+    </div>
+
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="Email" class="form-control" formControlName="email">
+    </div>
+
+    <div class="form-group">
+      <label>isAdmin</label>
+      <select class="form-control" formControlName="isAdmin">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">
+        <i class="fa fa-plus"></i> Create User</button>
+    </div>
+  </form>
+
+
+</p-card>

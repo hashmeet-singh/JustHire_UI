@@ -1,0 +1,74 @@
+<div class="Container">
+    <div class="">
+        <h2><b>Welcome to DashBoard</b></h2>
+    </div>
+    <hr/>
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+
+                        <h5>Users</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{statistics[1]}}</h1>
+                        <div class="stat-percent font-bold text-navy">{{date}}
+
+                        </div>
+                        <small>Number of Users</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Questions</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{statistics[2]}}</h1>
+                        <div class="stat-percent font-bold text-navy">{{date}}
+
+                        </div>
+                        <small>Number of Questions</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-primary pull-right">Today</span> -->
+                        <h5>Pending Questions</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{statistics[3]}}</h1>
+                        <div class="stat-percent font-bold text-navy">{{date}}
+
+                        </div>
+                        <small>Number of Pending Questions</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-danger pull-right">Low value</span> -->
+                        <h5>Pending Candidate</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{statistics[0]}}</h1>
+                        <div class="stat-percent font-bold text-navy">{{date}}
+
+                        </div>
+                        <small>Number of Pending Candidate</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
