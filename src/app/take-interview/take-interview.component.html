@@ -69,11 +69,12 @@
   </ng-template>
 </p-dataView>
 
-<p-dialog header="RESUME" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()">
-  <div class="ui-g" *ngIf="candidate">
-    <div class="ui-g-12" style="text-align:center">
+<p-dialog header="RESUME" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" 
+  width="700"  (onAfterHide)="onDialogHide()">
+  <div *ngIf="candidate">
+    <div class="ui-g-12" >
       <!-- <img src="../../assets/img/avatar/avatar-male.png" width="150"> -->
-      <object data="../../assets/lesson2.pdf"></object>
+      <object style="height: 600px; width: 100%" data="../../assets/lesson2.pdf"></object>
     </div>
     <!-- <div class="ui-g-4">Name </div>
         <div class="ui-g-8">{{candidate.firstName}}</div> -->

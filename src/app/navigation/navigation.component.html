@@ -25,9 +25,6 @@
               <a [routerLink]="['dashboard']"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span></a>
           </li>
           <li>
-            <a href="#" *ngIf="ifAdmin()"><i class="fa fa-user"></i> <span class="nav-label">&nbsp;User</span></a>
-          </li>
-          <li>
                 <a [routerLink]="['user/add']" *ngIf="ifAdmin()"><i class="fa fa-user"></i> <span class="nav-label">&nbsp;Add User</span></a>
           </li>
           <li>
