@@ -12,15 +12,19 @@ export class InterviewQuestionComponent implements OnInit {
   currentCandidate: any = {};
   question: any = {};
   answerForm: FormGroup;
+  report: any;
+  displayDialog: boolean;
   answerSubmitted: boolean = true;
-
+  resumeData:String;
   constructor(private interviewService: InterviewService,
     private fb: FormBuilder,
     private router: Router) { }
 
   ngOnInit() {
     this.currentCandidate = this.interviewService.getCandidate();
-    this.interviewService.getFirstQuestion()
+    this.resumeData=`http://localhost:8181/api/interview/candidate/${this.currentCandidate['candidateId']}`;
+
+    this.interviewService.getFirstQuestion(this.currentCandidate)
       .subscribe(question => {
         console.log(question);
         this.question = question;
@@ -84,5 +88,13 @@ export class InterviewQuestionComponent implements OnInit {
     })
   }
 
+  showReport(e, report) {
+    e.preventDefault;
+    this.report = report;
+    this.displayDialog = true;
+  }
 
+  onDialogHide() {
+    this.report = null;
+  }
 }

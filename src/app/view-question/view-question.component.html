@@ -6,7 +6,7 @@
           <th style="text-align:center">Question ID</th>
           <th style="text-align:center">Question</th>
           <th style="text-align:center">Experience</th>
-          <th style="text-align:center">Round</th>
+          <th style="text-align:center" >Round</th>
           <th style="text-align:center">Difficulty</th>
           <th style="text-align:center">Comment</th>
           <th style="text-align:center">Edit Question</th>
@@ -16,8 +16,8 @@
       <tr>
           <td>{{question.questionId}}</td>
           <td>{{question.question}}</td>
-          <td>{{question.experience}}</td>
-          <td>{{question.round.roundNumber}}</td>
+          <td>{{question.experience }} Yrs.</td>
+          <td>{{question.round| NotAssigned}}</td>
           <td>{{question.difficulty}}</td>
           <td>{{question.comment}}</td>
           <td><a [routerLink]="['edit',question.questionId]"><i class="fa fa-edit"></i></a></td>

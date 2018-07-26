@@ -30,16 +30,17 @@ export class AddQuestionComponent implements OnInit {
       question: ['', [Validators.required]],
       round: ['', [Validators.required]],
       difficulty: ['', [Validators.required]],
-      experience: ['', [Validators.required, Validators.email]],
+      experience: ['', [Validators.required]],
       comment: ['', Validators.required]
     });
- 
+
     this.statsService.loadRounds()
       .subscribe(response => {
         this.rounds = response;
         this.rounds = this.rounds.filter(item => item['roundNumber'] !== 0);
         console.log(this.rounds)
       });
+      
     this.route.params.subscribe(routeParam => {
       let id = routeParam.questionId
       console.log(routeParam);

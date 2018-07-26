@@ -12,9 +12,13 @@ export class AddUserComponent implements OnInit {
 
   rounds:any=[];
   userForm: FormGroup;
+  originalUser: any;
+  isEditing: boolean = false;
+  addUserForm: FormGroup;
   constructor(private fb: FormBuilder,
     private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute,) { }
 
   ngOnInit() {
 
@@ -31,15 +35,44 @@ export class AddUserComponent implements OnInit {
       phoneNumber: ['',Validators.required],
       roundNumber: ['',Validators.required],
     });
+
+    this.route.params.subscribe(routeParam=>{
+      let id = routeParam['userId'];
+      if (id) {
+
+        this.userService.loadUserById(id)
+          .subscribe(user => {
+            console.log(user);
+            this.originalUser = user;
+            this.userForm.patchValue(user)
+            this.isEditing = true;
+          })
+      };
+    });
+    
+
   }
 
 
   handleSubmit(e){
-    console.log(this.userForm.value);
+    if(this.isEditing){
+      let formData = this.userForm.value;
+      let user = Object.assign({}, this.originalUser, formData);
+      formData.email = user.email;
+      this.userService.update(user.userId, user)
+        .subscribe(question => {
+          this.userForm.reset();
+          this.router.navigateByUrl('home', {skipLocationChange: true})
+          .then(()=>this.router.navigate(['/home/user/view']));
+          this.isEditing = false;
+        })
+      return;
+    }
+    else {
     this.userService.addUser(this.userForm.value).subscribe(item=>{
       console.log(item);
       this.userForm.reset();
     });
-
+  }
   }
 }

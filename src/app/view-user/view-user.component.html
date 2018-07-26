@@ -11,6 +11,7 @@
         <th>Round Number</th>
         <th>Email</th>
         <th>Phone Number</th>
+        <th>Edit User</th>
       </tr>
 
     </ng-template>
@@ -18,10 +19,13 @@
       <tr>
         <td>{{user.userId}}</td>
         <td>{{user.firstName}}&nbsp;{{user.lastName}}</td>
-        <td>{{user.round.roundNumber}}</td>
+        <td>{{user.round | NotAssigned}}</td>
         <td>{{user.email}}</td>
         <td>{{user.phoneNumber}}</td>
+        <td><a [routerLink]="['edit',user.userId]"><i class="fa fa-edit"></i></a></td>
       </tr>
     </ng-template>
   </p-table>
 </p-card>
+<hr/>
+<router-outlet name="primary"></router-outlet>

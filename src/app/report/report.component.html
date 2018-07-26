@@ -1,56 +1,56 @@
-<p-card title="Report" styleClass="ui-card-shadow">
-  <hr/>
+<p-card styleClass="ui-card-shadow">
+
+  <div class="alert alert-danger" *ngIf="reportNotAvailable">No records found!</div>
+
+  <div *ngIf="!ifAdmin && !reportNotAvailable">
+    <p-table [value]="questionsAsked" [paginator]="true" [rows]="10" [responsive]="true">
+
+      <ng-template pTemplate="header">
+
+        <tr>
+          <th>Round No.</th>
+          <th>Question</th>
+          <th>Remarks</th>
+          <th>Score</th>
+        </tr>
+
+      </ng-template>
+      <ng-template pTemplate="body" let-questionAsked>
+        <tr>
+          <td>{{questionAsked.round}}</td>
+          <td>{{questionAsked.question.question}}</td>
+          <td>{{questionAsked.comment}}</td>
+          <td>{{questionAsked.score}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 
 
-  <div *ngIf="!ifAdmin"> 
-    <p-table [value]="questionsAsked"  [paginator]="true" [rows]="10" [responsive]="true">
-    
-    <ng-template pTemplate="header">
+  <div *ngIf="ifAdmin  && !reportNotAvailable">
 
-      <tr>
-        <th>Round No.</th>
-        <th>Question</th>
-        <th>Remarks</th>
-        <th>Score</th>
-      </tr>
+    <p-table [value]="candidateReport" [paginator]="true" [rows]="10" [responsive]="true">
 
-    </ng-template>
-    <ng-template pTemplate="body" let-questionAsked>
-      <tr>
-        <td>{{questionAsked.round.roundNumber}}</td>
-        <td>{{questionAsked.question.question}}</td>
-        <td>{{questionAsked.comment}}</td>
-        <td>{{questionAsked.score}}</td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+      <ng-template pTemplate="header">
 
+        <tr>
+          <th>Candidate Name</th>
+          <th>Status</th>
+          <th>Score</th>
+          <th>Email</th>
+        </tr>
 
-<div *ngIf="ifAdmin">
+      </ng-template>
+      <ng-template pTemplate="body" let-candidateReport>
+        <tr>
+          <td>{{candidateReport.firstName}}&nbsp;{{candidateReport.lastName}}</td>
+          <td>{{candidateReport.status}}</td>
+          <td>{{candidateReport.score}}</td>
+          <td>{{candidateReport.email}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
 
-    <p-table [value]="candidateReport"  [paginator]="true" [rows]="10" [responsive]="true">
-    
-        <ng-template pTemplate="header">
-    
-          <tr>
-            <th>Candidate Name</th>
-            <th>Status</th>
-            <th>Score</th>
-            <th>Email</th>
-          </tr>
-    
-        </ng-template>
-        <ng-template pTemplate="body" let-candidateReport>
-          <tr>
-            <td>{{candidateReport.firstName}}&nbsp;{{candidateReport.lastName}}</td>
-            <td>{{candidateReport.status}}</td>
-            <td>{{candidateReport.score}}</td>
-            <td>{{candidateReport.email}}</td>
-          </tr>
-        </ng-template>
-      </p-table>
+  </div>
 
-</div>
- 
 </p-card>

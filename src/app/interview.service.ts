@@ -6,7 +6,7 @@ import { Router } from '../../node_modules/@angular/router';
   providedIn: 'root'
 })
 export class InterviewService {
-  currentCandidate: any;
+  // currentCandidate: any;
   minimunQuestionsCount: Number;
   currentQuestionCount = parseInt(JSON.parse(localStorage.getItem('currentQuestionCount'))) ;
   //round not getting inititalized everytime
@@ -14,7 +14,7 @@ export class InterviewService {
 
   constructor(private http: HttpClient,
     private router: Router) {
-    this.currentCandidate = JSON.parse(localStorage.getItem('currentCandidate'));
+    // this.currentCandidate = JSON.parse(localStorage.getItem('currentCandidate'));
   }
 
   minThresholdReached() {
@@ -56,19 +56,19 @@ export class InterviewService {
 
   setCandidate(candidate) {
     localStorage.setItem('currentCandidate', JSON.stringify(candidate));
-    this.currentCandidate = candidate;
-    console.log(JSON.parse(localStorage.getItem('currentCandidate')));
+    // this.currentCandidate = candidate;
+    console.log();
   }
 
   getCandidate() {
-    return this.currentCandidate;
+    return JSON.parse(localStorage.getItem('currentCandidate'));
   }
 
-  getFirstQuestion() {
+  getFirstQuestion(candidate) {
     return this.http.get(this.apiURL + '/firstquestion', {
       params: {
-        candidateId: this.currentCandidate['candidateId'],
-        roundId: JSON.parse(localStorage.getItem('user'))['round']['roundNumber']
+        candidateId: candidate['candidateId'],
+        roundId: JSON.parse(localStorage.getItem('user'))['round']
       }
     });
   }
@@ -76,8 +76,8 @@ export class InterviewService {
   getNextQuestion() {
     return this.http.get(this.apiURL + '/next-question', {
       params: {
-        candidateId: this.currentCandidate['candidateId'],
-        roundId: JSON.parse(localStorage.getItem('user'))['round']['roundNumber']
+        candidateId: this.getCandidate()['candidateId'],
+        roundId: JSON.parse(localStorage.getItem('user'))['round']
       }
     });
   }
@@ -85,22 +85,22 @@ export class InterviewService {
   submitAnswer(ans, questionId, score) {
 
     let answer: Object = {
-      candidateId: this.currentCandidate['candidateId'],
+      candidateId: this.getCandidate()['candidateId'],
       comment: ans.comment,
       questionId: questionId,
-      roundId: JSON.parse(localStorage.getItem('user'))['round']['roundNumber'],
+      roundId: JSON.parse(localStorage.getItem('user'))['round'],
       score: score
     }
     return this.http.post(this.apiURL + '/submitanswer', answer);
   }
 
   stopInterview() {
-    console.log(JSON.parse(localStorage.getItem('user'))['round']['roundNumber']);
+    console.log(JSON.parse(localStorage.getItem('user'))['round']);
     // localStorage.removeItem('currentCandidate');
     return this.http.post(this.apiURL + '/stop-interview', {}, {
       params: {
-        candidateId: this.currentCandidate['candidateId'],
-        roundId: JSON.parse(localStorage.getItem('user'))['round']['roundNumber']
+        candidateId: this.getCandidate()['candidateId'],
+        roundId: JSON.parse(localStorage.getItem('user'))['round']
       }
     });
   }

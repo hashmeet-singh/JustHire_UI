@@ -5,14 +5,14 @@
         <th>Name:</th>
         <td>{{currentCandidate.firstName}} &nbsp; {{currentCandidate.lastName}}</td>
         <td>
-          <button pButton type="button" label="View Report " style="margin-right: .25em; "></button>
+          <button pButton type="button" label="View Report" (click)="showReport($event,currentCandidate)" style="margin-right: .25em; "></button>
         </td>
       </tr>
       <tr>
         <th>Experience:</th>
         <td>{{currentCandidate.experience}}&nbsp; Yrs</td>
         <td>
-          <button pButton type="button" label="View Resume" style="margin-right: .25em"></button>
+          <a href="{{resumeData}}" target="_blank"><button pButton type="button" label="View Resume" style="margin-right: .25em"></button></a>
         </td>
       </tr>
     </table>
@@ -20,7 +20,6 @@
 </p-card>
 
 <hr/>
-
 
 <p-card title="Question" styleClass="ui-card-shadow">
   <p-header>
@@ -59,3 +58,12 @@
 
   </p-footer>
 </p-card>
+
+<p-dialog header="REPORT" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="700"(onAfterHide)="onDialogHide()">
+  <div *ngIf="report">
+    <div class="ui-g-12" >
+    </div>
+    <app-report></app-report>
+    <!-- <router-outlet name="primary"></router-outlet> -->
+  </div>
+</p-dialog>

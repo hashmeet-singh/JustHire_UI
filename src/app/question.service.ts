@@ -14,8 +14,12 @@ export class QuestionService {
     return this.http.get(this.apiUrl)
   }
 
+  loadQuestionsForUser(userId){
+    return this.http.get(this.apiUrl+`/${userId}`);
+  }
+
   loadQuestion(id){
-    return this.http.get(this.apiUrl + `/edit/${id}`)
+    return this.http.get(this.apiUrl + `/edit/${id}`);
   }
 
   submit(question) {

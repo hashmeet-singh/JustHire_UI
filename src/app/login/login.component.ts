@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit {
 
   handleSubmit(event) {
     if (this.loginForm.valid) {
-      console.log('Password '+Md5.hashStr(this.loginForm.value['password']));
+      // console.log('Password '+Md5.hashStr(this.loginForm.value['password']));
+      this.loginForm.value['password'] = Md5.hashStr(this.loginForm.value['password']);
+      // console.log('New Password'+ this.loginForm.value['password']);
       this.authenticateService.authenticateUser(this.loginForm.value).subscribe(response => {
         console.log(response);
         if (response['message'] === 'Login Successful') {

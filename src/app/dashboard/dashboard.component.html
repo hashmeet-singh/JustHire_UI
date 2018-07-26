@@ -1,6 +1,8 @@
 <div class="Container">
     <div class="">
-        <h2><b>Welcome to DashBoard</b></h2>
+        <h2>
+            <b>Welcome to DashBoard</b>
+        </h2>
     </div>
     <hr/>
     <div class="wrapper wrapper-content">
@@ -69,6 +71,39 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-primary pull-right">Today</span> -->
+                        <h5>Unassigned Questions</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{unassignedQuestions}}</h1>
+                        <div class="stat-percent font-bold text-navy">{{date}}
+
+                        </div>
+                        <small>Number of Unassigned Questions</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-danger pull-right">Low value</span> -->
+                        <h5>Unassigned Interviewers</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{unassignedUsers}}</h1>
+                        <div class="stat-percent font-bold text-navy">{{date}}
+
+                        </div>
+                        <small>Number of Unassigned Interviewers</small>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 </div>

@@ -1,24 +1,24 @@
-<p-card title="Configure System Attributes" styleClass="ui-card-shadow">
+<p-card title="Configure Interview" styleClass="ui-card-shadow">
     <hr/>
     <form [formGroup]="systemForm" (submit)="handleSubmit($event)">
       <div class="form-group">
         <label>Number of Rounds</label>
-        <input type="number" placeholder="Name" class="form-control" formControlName="noOfRounds" />
+        <input type="number" placeholder="Ex: 3" class="form-control" formControlName="noOfRounds" />
       </div>
   
       <div class="form-group">
         <label>Minimum Questions</label>
-        <input type="number" placeholder="Name" class="form-control" formControlName="minimumQuestions" />
+        <input type="number" placeholder="Ex: 2" class="form-control" formControlName="minimumQuestions" />
       </div>
   
     <div class="form-group">
         <label>Threshold</label>
-        <input type="number" placeholder="Phone" class="form-control" formControlName="threshold">
+        <input type="number" placeholder="Ex: 8" class="form-control" formControlName="threshold">
       </div>
   
       <div class="form-group">
         <button type="submit" class="btn btn-success">
-          <i class="fa fa-plus"></i> Set Attributes</button>
+          <i class="fa fa-plus"></i> Set Interview</button>
       </div>
     </form>
   

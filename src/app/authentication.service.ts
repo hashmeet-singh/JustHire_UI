@@ -57,7 +57,12 @@ export class AuthenticationService {
 
   getUserRound(){
     
-    return JSON.parse(localStorage.getItem('user'))['round']['roundNumber']; 
+    return JSON.parse(localStorage.getItem('user'))['round']; 
+  }
+
+  updatePassword(id,form){
+    let url=`http://localhost:8181/api/login/changePassword/`;
+    return this.http.put(url+`${id}`, form);
   }
 
 }

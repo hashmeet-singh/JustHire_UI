@@ -27,9 +27,22 @@ export class ConfigureInterviewComponent implements OnInit {
   }
 
   handleSubmit(event) {
-    this.statsService.setAttributes(this.systemForm.value).subscribe(response => {
-      console.log(response);
-    });
+    event.preventDefault();
+    if (this.systemForm.valid) {
+      this.statsService.loadStats()
+        .subscribe(stats => {
+          console.log(stats[0]);
+          if (stats[0] > 0) {
+            console.log('Cant Configure');
+          }
+          else {
+            this.statsService.setAttributes(this.systemForm.value).subscribe(response => {
+              console.log(response);
+            });
+          }
+        });
+
+    }
 
   }
 

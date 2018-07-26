@@ -35,6 +35,9 @@ import { QuestionResolverService } from './question-resolver.service';
 import { DatePipe } from '../../node_modules/@angular/common';
 import { ReportComponent } from './report/report.component';
 import { UploadFileService } from './upload-file.service';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { UserResolverService } from './user-resolver.service';
+import { NotAssignedPipe } from './not-assigned.pipe';
 
 
 const routes: Routes =[
@@ -44,8 +47,14 @@ const routes: Routes =[
     children:[
       {path:'', redirectTo:'dashboard', pathMatch:'full'},
       {path:'dashboard',component:DashboardComponent},
+      {path:'changePassword', component:ChangePasswordComponent},
       {path:'user/add', component:AddUserComponent}, 
-      {path:'user/view',component:ViewUserComponent},
+      {path:'user/view',component:ViewUserComponent,
+        resolve: {allUsers: UserResolverService},
+        children: [
+         {path: 'edit/:userId', component: AddUserComponent}
+        ]
+      },
       {path:'candidate/add', component:AddCandidateComponent},
       {path:'candidate/view', component:ViewCandidateComponent},
       {path:'questions/pending', component:PendingQuestionComponent},
@@ -84,7 +93,9 @@ const routes: Routes =[
     DashboardComponent,
     InterviewQuestionComponent,
     ConfigureInterviewComponent,
-    ReportComponent
+    ReportComponent,
+    ChangePasswordComponent,
+    NotAssignedPipe
   ],
   imports: [
     BrowserModule,
@@ -103,6 +114,7 @@ const routes: Routes =[
   providers: [
     AuthGuard, 
     AuthenticationService,
+    UserResolverService,
     UploadFileService,
     DatePipe
   ],
